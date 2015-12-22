@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  CoreBluetoothMyDemo
+//
+//  Created by qingyun on 15/12/22.
+//  Copyright © 2015年 qingyun. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+//定义UUID,使用终端执行命令uuidgen,就可以得到UUID
+#define TRANSFER_SERVICE_UUID    @"B97443EC-0C60-43FA-8F0A-0993B5145D31"
+#define TRANSFER_CHARACTERISTIC_UUID   @"199177BA-C7C7-4CAE-8C57-7C266490EDFF"
+#define EOM     @"EOM"
+
+#endif /* PrefixHeader_pch */
