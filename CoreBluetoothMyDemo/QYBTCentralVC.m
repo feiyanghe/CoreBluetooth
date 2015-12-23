@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //**************第一步创建central manager 对象************
-    //1、创建central manager 对象
+    //1、创建central manager 对象（遵守代理协议）
     _centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];//CB:CoreBluetooth
     
 }
@@ -55,6 +55,7 @@
 
 //当Central设备发现Peripheral设备发出的Advertising报文时，调用该方法
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI{
+    //RSSI:Received Signal Strength Indication接收的信号强度指示，无线发送层的可选部分，用来判定链接质量，以及是否增大广播发送强度。
     //如果，已经发现过该设备，则直接返回，否则，保存该设备，并开始连接该设备
     if (self.discoverPeripheral ==peripheral) {
         return;
@@ -96,7 +97,7 @@
         return;
     }
     NSLog(@"[INFO]:连接已断开");
-    //在主队列里更新UI
+    //在主队列里更新switch开启状态
     dispatch_async(dispatch_get_main_queue(), ^{
         //已经连接上设备，就把switch开关的状态置为关闭
         _scanSwitch.on = NO;
